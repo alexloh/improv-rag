@@ -43,11 +43,10 @@ for list in details.find_all("ul"):
             desc_html = urlopen(url).read().decode("utf-8")
             desc_page = BeautifulSoup(desc_html, "html.parser")
             desc_det = desc_page.find(get_details)
-            desc = str(desc_det.h3.next_sibling)
-            # consolidate into single line, adding context, and write to CSV file
+            desc = str(desc_det.text).strip().replace("\"", "")
+            # Consolidate into single line, adding context, and write to CSV file
             # Quote marks are needed so CSV can handle multiline strings
             context = f"This improv game is called {name} and its description is as follows: {desc}"
-            context.strip()
             output_file.write("\""+context+"\"\n")
         except:
             print(" Error has occurred!")
@@ -61,8 +60,6 @@ if len(bad_urls) > 0:
     error_file = open(os.path.dirname(os.path.abspath(__file__)) + "/" + err_filename, "w+")
     print(f"Failed to open {len(bad_urls)} pages, saving bad pages to {error_file.name}")
     for b in bad_urls:
-        error_file.write(b)
+        error_file.write(b+"\n")
     error_file.close()
-
-#import pandas as pd
 
