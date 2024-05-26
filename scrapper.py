@@ -32,6 +32,9 @@ print(f"Saving output to {output_file.name}")
 
 bad_urls = []
 count = 0
+# Write column heading to CSV file
+output_file.write("text\n")
+# Write rest of data
 for list in details.find_all("ul"):
     for game in list.find_all('a'):
         name = game.string
