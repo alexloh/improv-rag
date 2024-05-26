@@ -60,7 +60,7 @@ def ask_rag(question: str) -> (str, str):
     )
     return response.choices[0].message.content, context
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/rag', methods=['GET', 'POST'])
 def classify_emotion():
     if request.method == 'POST':
         get_client()
@@ -70,9 +70,9 @@ def classify_emotion():
         return render_template_string('''
             <h2>You asked:</h1>
             <pre style="white-space: pre-wrap;">{{ text }}</pre>
-            <h2>ChatGPT3.5 Result (no RAG):</h1>
+            <h2>Original ChatGPT response (no RAG):</h1>
             <pre style="white-space: pre-wrap;">{{ result }}</pre>
-            <h2>RAG augmented result:</h1>
+            <h2>RAG-augmented ChatGPT response:</h1>
             <pre style="white-space: pre-wrap;">{{ result_rag }}</pre>
             <h4>Context used for RAG:<h4>
             <p style="white-space: pre-line"><small>{{ rag_context }}</small></p>
@@ -95,7 +95,11 @@ def classify_emotion():
         </style>
 
         <h1>Ask an Improv-related question!</h1>
-        For instance,
+        <p>ChatGPT3.5 is very bad at improv-related prompts, often producing confident-sounding but nonsensical responses.
+           This website uses Retrieval Augmented Generation (RAG) and information sourced from <a href="https://improvencyclopedia.org/games/index.html">Improv Encyclopedia</a>
+            to (significantly?) improve its result. And when it doesn't, that can make for a hilarious scene!
+        </p>
+        <p>Ask it any question and compare the response with and without RAG:</p>
         <ul>
             <form action="" method="post">
                 <li><button type="submit" name="text" value="Can you tell me about the improv game Big Booty?" class="button2">
