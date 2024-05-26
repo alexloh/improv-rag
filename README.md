@@ -33,6 +33,10 @@ We built a web interface using [Python Anywhere](https://www.pythonanywhere.com/
 
 A demo is currently hosted at: https://alexloh.pythonanywhere.com/rag
 
+To run your own version, you need to create a .env file to store your OpenAI key, and add this line to it:
+
+    OPENAI_API_KEY="<Your OpenAI key>"
+
 ## Observations
 
 ChatGPT 3.5 is not great at answering improv questions, and gets about 50% of them wrong. After extensive testing however, it seems our authoritative source is not perfect either -- easy improvements can be made by simply scrapping more data. Some well-known games (eg Mind Meld, Blind Lines) are missing; while for some others the site describes uncommon ways of playing them. Nonetheless, the RAG-augment answers are far better than the original ones.
