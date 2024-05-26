@@ -29,7 +29,9 @@ This context is visible on the response page.
 Additionally we use OpenAI text-embedding-3-small to generate embeddings for both the question and scrapped data. We use the dot product between the embedding of the question and the page to evaluate how relevant the page is to the question. This dot product is also shown in the response.
 
 ## Frontend
-We built a web interface using [Python Anywhere](https://www.pythonanywhere.com/). Frontend allows users to ask a question and compare side-by-side the answers from ChatGPT with and without RAG. Context and relevance score are also shown.
+We built a web interface using [Python Anywhere](https://www.pythonanywhere.com/) following the guide at https://blog.pythonanywhere.com/210/. Frontend allows users to ask a question and compare side-by-side the answers from ChatGPT with and without RAG. Context and relevance score are also shown.
+
+A demo is currently hosted at: https://alexloh.pythonanywhere.com/rag
 
 ## Observations
 
