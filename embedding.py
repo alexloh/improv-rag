@@ -1,3 +1,4 @@
+from ast import literal_eval
 from dotenv import load_dotenv
 from openai import OpenAI
 import numpy as np
@@ -31,7 +32,9 @@ question4 = "Tell me more about the improv game with three line scenes!"
 question = question3
 qn_embedding = get_embedding(question)
 
-df2 = pd.read_pickle(curr_dir + "/" + "embeddings.pkl")
+#types_dict = {"text": str, "embeddings": list[float] }
+#df2 = pd.read_csv(curr_dir + "/" + "embeddings.csv")
+df2 = pd.read_csv(curr_dir + "/" + "embeddings.csv", sep=',', converters=dict(embeddings=literal_eval))
 
 def dot(embedding):
     return np.dot(embedding, qn_embedding)

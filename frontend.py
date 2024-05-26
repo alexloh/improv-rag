@@ -1,11 +1,9 @@
+from ast import literal_eval
 from flask import Flask, request, render_template_string
-from transformers import pipeline
 import pandas as pd
 from openai import OpenAI
 import os
-import ast
 import numpy as np
-import pdb
 from dotenv import load_dotenv
 
 app = Flask(__name__)
@@ -23,7 +21,7 @@ embedding = None
 def init_embedding():
     global embedding
     if embedding is None:
-        embedding = pd.read_pickle(curr_dir + "/" + "embeddings.pkl")
+        embedding = pd.read_csv(curr_dir + "/" + "embeddings.csv", sep=',', converters=dict(embeddings=literal_eval))
     return embedding
 
 def get_embedding(text, model="text-embedding-3-small"):
@@ -78,7 +76,7 @@ def classify_emotion():
             <pre style="white-space: pre-wrap;">{{ result_rag }}</pre>
             <h4>Context used for RAG:<h4>
             <p style="white-space: pre-line"><small>{{ rag_context }}</small></p>
-            <a href="/">Go Back</a>
+            <a href="/rag">Go Back</a>
         ''', text=text, result=result, result_rag=result_rag, rag_context=rag_context)
 
     return render_template_string('''
