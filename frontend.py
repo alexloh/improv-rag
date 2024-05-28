@@ -74,6 +74,7 @@ def classify_emotion():
             <pre style="white-space: pre-wrap;">{{ result }}</pre>
             <h2>RAG-augmented ChatGPT response:</h1>
             <pre style="white-space: pre-wrap;">{{ result_rag }}</pre>
+            <hr>
             <h4>Context used for RAG:<h4>
             <p style="white-space: pre-line"><small>{{ rag_context }}</small></p>
             <a href="/rag">Go Back</a>
@@ -102,11 +103,14 @@ def classify_emotion():
         <p>Ask it any question and compare the response with and without RAG:</p>
         <ul>
             <form action="" method="post">
+                <li><button type="submit" name="text" value="Can you tell me about the improv game I am a Tree?" class="button2">
+                    Can you tell me about the improv game I am a Tree?
+                </button></li>
                 <li><button type="submit" name="text" value="Can you tell me about the improv game Big Booty?" class="button2">
                     Can you tell me about the improv game Big Booty?
                 </button></li>
-                <li><button type="submit" name="text" value="Can you tell me about the improv game Hitch Hiker?" class="button2">
-                    Can you tell me about the improv game Hitch Hiker?
+                <li><button type="submit" name="text" value="Can you tell me about the improv game Hot Spot?" class="button2">
+                    Can you tell me about the improv game Hot Spot?
                 </button></li>
                 <li><button type="submit" name="text" value="Can you tell me about improv long form La Ronde?" class="button2">
                     Can you tell me about the improv long form La Ronde?
@@ -120,8 +124,8 @@ def classify_emotion():
             </form>
         </ul>
         <form method="post">
-            <textarea name="text" rows="4" cols="50">Can you tell me about the improv game Big Booty?</textarea><br><br>
-            <input type="submit" value="Ask">
+            <textarea name="text" rows="4" cols="50">Can you tell me about the improv game I am a Tree?</textarea><br><br>
+            <input type="submit" value="Ask your question">
         </form>
         <p><small>By Alex Loh. Full source available on my <a href='https://github.com/alexloh/improv-rag/tree/main'>Github</a></small></p>
     ''')
